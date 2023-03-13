@@ -29,12 +29,17 @@ function love.load()
 end
 
 function love.update(dt)
-    if parpadear < 1 then
-        parpadear = parpadear + dt
-    else
-        parpadear = 0
+    if gameStart == false then
+        if parpadear < 1 then
+            parpadear = parpadear + dt
+        else
+            parpadear = 0
+        end
+        moveWelcomeAsteroid(dt)
     end
-    moveWelcomeAsteroid(dt)
+    if gameStart == true then
+        movePlayer(dt)
+    end
 end
 
 function love.draw(dt)
