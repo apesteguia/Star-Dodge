@@ -8,5 +8,10 @@ function createPlayer()
 end
 
 function drawPlayer()
+    love.graphics.draw(ufo, player.x, player.y, 0, player.w / ufo:getWidth(),
+        player.h / ufo:getWidth())
+end
+
+function drawPlayer()
 
 end
