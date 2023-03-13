@@ -11,9 +11,7 @@ Fun and enjoyable 2D game.
 You first need to install [lua](https://lua.org) and [love2D](https://love2d.org) on your system. Here is the example in Arch Linux.
 
 ```
-
 sudo pacman -S lua love
-
 ```
 
 ### Windows
