@@ -3,6 +3,7 @@ require("gameWelcome")
 require("/game/game")
 require("/game/player")
 require("background")
+require("/game/asteroids")
 
 function love.load()
     windowWidth = 1000
@@ -24,8 +25,10 @@ function love.load()
     randomPoints()
     generateWelcomeAsteroids(10)
     createPlayer()
+    asteroids = {}
     gameStart = false
     parpadear = 0
+    timer = 0
 end
 
 function love.update(dt)
@@ -38,7 +41,12 @@ function love.update(dt)
         moveWelcomeAsteroid(dt)
     end
     if gameStart == true then
+        timer = timer + dt
         movePlayer(dt)
+        if timer > 1 then
+            createAsteroid()
+            moveAsteroid(dt)
+        end
     end
 end
 
@@ -57,5 +65,6 @@ function love.draw(dt)
         welcome()
     elseif gameStart == true then
         game()
+        drawAsteroid()
     end
 end
