@@ -21,6 +21,7 @@ function love.load()
     font100 = love.graphics.newFont("/Font/arcade.TTF", 100)
 
     randomPoints()
+    generateWelcomeAsteroids(10)
     gameStart = false
     parpadear = 0
 end
@@ -31,6 +32,7 @@ function love.update(dt)
     else
         parpadear = 0
     end
+    moveWelcomeAsteroid(dt)
 end
 
 function love.draw(dt)
@@ -45,6 +47,7 @@ function love.draw(dt)
                        --]]
     if gameStart == false then
         welcome()
+        createWelcomeAsteroids()
     elseif gameStart == true then
         game()
     end

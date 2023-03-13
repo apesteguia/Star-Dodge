@@ -13,3 +13,29 @@ function welcome()
         love.event.quit()
     end
 end
+
+function generateWelcomeAsteroids(num)
+    welcomeAsteroids = {}
+    for i = 1, num do
+        local a = {}
+        a.x = math.random(0, 1000)
+        a.y = math.random(0, 800)
+        a.w = math.random(100, 200)
+        a.h = a.w
+        table.insert(welcomeAsteroids, a)
+    end
+end
+
+function createWelcomeAsteroids()
+    for i, v in ipairs(welcomeAsteroids) do
+        love.graphics.draw(asteroide, v.x, v.y, 0, v.w / asteroide:getWidth(),
+            v.h / asteroide:getWidth())
+    end
+end
+
+function moveWelcomeAsteroid(dt)
+    for i, v in ipairs(welcomeAsteroids) do
+        v.x = v.x + 50 * dt
+        v.y = v.y + 50 * dt
+    end
+end
