@@ -16,7 +16,7 @@ end
 function drawAsteroid()
     for i, v in ipairs(asteroids) do
         love.graphics.draw(asteroide, v.x, v.y, 0, v.w / asteroide:getWidth(),
-            v.h / asteroide:getWidth())
+            v.w / asteroide:getWidth())
     end
 end
 
