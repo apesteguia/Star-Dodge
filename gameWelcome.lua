@@ -18,7 +18,7 @@ function generateWelcomeAsteroids(num)
     welcomeAsteroids = {}
     for i = 1, num do
         local a = {}
-        a.x = math.random(0, 1000)
+        a.x = math.random(100, 1000)
         a.y = math.random(0, 800)
         a.w = math.random(100, 200)
         a.h = a.w
@@ -35,7 +35,12 @@ end
 
 function moveWelcomeAsteroid(dt)
     for i, v in ipairs(welcomeAsteroids) do
-        v.x = v.x + 50 * dt
-        v.y = v.y + 50 * dt
+        if v.x + v.w < 0 or v.y + v.w < 800 then
+            v.x = v.x - 50 * dt
+            v.y = v.y + 50 * dt
+        else
+            v.x = math.random(400, 1000)
+            v.y = math.random(0, 400)
+        end
     end
 end

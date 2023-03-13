@@ -46,8 +46,8 @@ function love.draw(dt)
                        40 / ufo:getWidth())
                        --]]
     if gameStart == false then
-        welcome()
         createWelcomeAsteroids()
+        welcome()
     elseif gameStart == true then
         game()
     end
