@@ -1,6 +1,7 @@
 -- modules
 require("gameWelcome")
 require("/game/game")
+require("/game/player")
 require("background")
 
 function love.load()
@@ -22,6 +23,7 @@ function love.load()
 
     randomPoints()
     generateWelcomeAsteroids(10)
+    createPlayer()
     gameStart = false
     parpadear = 0
 end

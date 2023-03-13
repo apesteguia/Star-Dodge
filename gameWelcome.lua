@@ -44,3 +44,13 @@ function moveWelcomeAsteroid(dt)
         end
     end
 end
+
+function deleteWelcomeAsteroids()
+    deleteWelcomeAs = false
+    if gameStart == true and deleteWelcomeAs == false then
+        for i, v in ipairs(welcomeAsteroids) do
+            table.remove(welcomeAsteroids, i)
+        end
+        deleteWelcomeAs = true
+    end
+end
