@@ -37,6 +37,13 @@ function love.load()
 end
 
 function love.update(dt)
+    if gameStart == false and gameOver == true then
+        if parpadear < 1 then
+            parpadear = parpadear + dt
+        else
+            parpadear = 0
+        end
+    end
     if gameStart == false and gameOver == false then
         if rotateWelcome > 100 then rotateWelcome = 0 end
         if parpadear < 1 then
