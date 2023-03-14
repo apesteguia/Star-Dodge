@@ -14,10 +14,10 @@ You first need to install [lua](https://lua.org) and [love2D](https://love2d.org
 sudo pacman -S lua love
 ```
 
-Now clone this repository or download .zip file and extract it. Once you are in the game folder, run this command.
+Now clone download the .love file [here](https://github.com/apesteguia/Star-Dodge/releases) and run:
 
 ```
-love .
+love Star-dodge.love
 ```
 
 ### Windows
