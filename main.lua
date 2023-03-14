@@ -5,6 +5,7 @@ require("/game/player")
 require("background")
 require("/game/asteroids")
 require("/game/collisions")
+require("/game/gameOver")
 
 function love.load()
     windowWidth = 1000
@@ -31,12 +32,12 @@ function love.load()
     parpadear = 0
     rotateWelcome = 0
     timer = 0
+    score = 0
     gameOver = false
 end
 
 function love.update(dt)
-    if gameStart == false then
-        rotateWelcome = rotateWelcome + dt
+    if gameStart == false and gameOver == false then
         if rotateWelcome > 100 then rotateWelcome = 0 end
         if parpadear < 1 then
             parpadear = parpadear + dt
@@ -45,11 +46,12 @@ function love.update(dt)
         end
         moveWelcomeAsteroid(dt)
     end
-    if gameStart == true then
+    if gameStart == true and gameOver == false then
         timer = timer + dt
         if timer > 1 then
             createAsteroid(dt)
             timer = 0
+            score = score + 1
         end
         movePlayer(dt)
         moveAsteroid(dt)
@@ -62,17 +64,13 @@ function love.draw(dt)
     setBackground()
     love.graphics.setFont(font16)
     love.graphics.print("Press    EXC   to   exit", 800, 750)
-    --[[
-    love.graphics.draw(asteroide, 0, 0, 0, 100 / asteroide:getWidth(),
-                       100 / asteroide:getWidth())
-    love.graphics.draw(ufo, 100, 100, 0, 40 / ufo:getWidth(),
-                       40 / ufo:getWidth())
-                       --]]
-    if gameStart == false then
+    if gameStart == false and gameOver == false then
         createWelcomeAsteroids()
         welcome()
     elseif gameStart == true then
         game()
         drawAsteroid()
+    elseif gameOver == true and gameStart == false then
+        gameOverScreen()
     end
 end

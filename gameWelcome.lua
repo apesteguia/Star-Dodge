@@ -9,6 +9,7 @@ function welcome()
     love.graphics.print("by  mikel  apesteguia", 20, 750)
     if love.keyboard.isDown("space") then
         gameStart = true
+        gameOver = false
     elseif love.keyboard.isDown("escape") then
         love.event.quit()
     end
