@@ -4,6 +4,7 @@ require("/game/game")
 require("/game/player")
 require("background")
 require("/game/asteroids")
+require("/game/collisions")
 
 function love.load()
     windowWidth = 1000
@@ -28,11 +29,15 @@ function love.load()
     asteroids = {}
     gameStart = false
     parpadear = 0
+    rotateWelcome = 0
     timer = 0
+    gameOver = false
 end
 
 function love.update(dt)
     if gameStart == false then
+        rotateWelcome = rotateWelcome + dt
+        if rotateWelcome > 100 then rotateWelcome = 0 end
         if parpadear < 1 then
             parpadear = parpadear + dt
         else
@@ -42,11 +47,14 @@ function love.update(dt)
     end
     if gameStart == true then
         timer = timer + dt
-        movePlayer(dt)
         if timer > 1 then
-            createAsteroid()
-            moveAsteroid(dt)
+            createAsteroid(dt)
+            timer = 0
         end
+        movePlayer(dt)
+        moveAsteroid(dt)
+        deleteAsteorid(dt)
+        checkCollision(dt)
     end
 end
 

@@ -28,8 +28,9 @@ end
 
 function createWelcomeAsteroids()
     for i, v in ipairs(welcomeAsteroids) do
-        love.graphics.draw(asteroide, v.x, v.y, 0, v.w / asteroide:getWidth(),
-            v.h / asteroide:getWidth())
+        love.graphics.draw(asteroide, v.x, v.y, rotateWelcome,
+                           v.w / asteroide:getWidth(),
+                           v.h / asteroide:getWidth())
     end
 end
 

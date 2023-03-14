@@ -4,16 +4,17 @@ function createPlayer()
     player.h = 90
     player.x = (windowWidth / 2) - player.w
     player.y = (windowHeight / 2) - player.h
-    player.speed = 180
+    player.speed = 250
 end
 
 function drawPlayer()
     love.graphics.draw(ufo, player.x, player.y, 0, player.w / ufo:getWidth(),
-        player.h / ufo:getWidth())
+                       player.h / ufo:getWidth())
 end
 
 function movePlayer(dt)
-    if player.x > 0 and player.x < windowWidth - player.w and player.y > 0 and player.y < windowHeight - player.h then
+    if player.x > 0 and player.x < windowWidth - player.w and player.y > 0 and
+        player.y < windowHeight - player.h then
         if love.keyboard.isDown("d") and love.keyboard.isDown("w") then
             player.x = player.x + player.speed * dt * 0.5
             player.y = player.y - player.speed * dt * 0.5

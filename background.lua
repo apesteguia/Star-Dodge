@@ -11,4 +11,7 @@ function randomPoints()
     end
 end
 
-function setBackground() love.graphics.points(stars) end
+function setBackground()
+    love.graphics.setPointSize(math.random(1, 2))
+    love.graphics.points(stars)
+end
